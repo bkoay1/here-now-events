@@ -1,5 +1,10 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Tailwind Configuration for HereNow
+ * Extends the default theme with custom colors, animations, and utilities
+ * for a warm, engaging social event discovery experience.
+ */
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
@@ -13,7 +18,12 @@ export default {
       },
     },
     extend: {
+      /* Font family using Outfit for modern, friendly typography */
+      fontFamily: {
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
+      },
       colors: {
+        /* Base semantic colors from CSS variables */
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -57,33 +67,86 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        /* HereNow custom event type colors */
+        physical: "hsl(var(--physical))",
+        mental: "hsl(var(--mental))",
+        social: "hsl(var(--social))",
+        online: "hsl(var(--online))",
+        attending: "hsl(var(--attending))",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
+        "2xl": "calc(var(--radius) + 8px)",
       },
       keyframes: {
+        /* Accordion animations for collapsible content */
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        /* Pulse animation for countdown timer */
+        "pulse-soft": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.7" },
+        },
+        /* Slide up reveal for event cards */
+        "slide-up-reveal": {
+          "0%": { 
+            opacity: "0", 
+            transform: "translateY(20px) scale(0.95)" 
           },
-          to: {
-            height: "0",
+          "100%": { 
+            opacity: "1", 
+            transform: "translateY(0) scale(1)" 
+          },
+        },
+        /* Shimmer effect for loading states */
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        /* Float animation for decorative elements */
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        /* Bounce in for notifications/alerts */
+        "bounce-in": {
+          "0%": { 
+            opacity: "0", 
+            transform: "scale(0.3)" 
+          },
+          "50%": { 
+            transform: "scale(1.05)" 
+          },
+          "70%": { 
+            transform: "scale(0.9)" 
+          },
+          "100%": { 
+            opacity: "1", 
+            transform: "scale(1)" 
           },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-soft": "pulse-soft 2s ease-in-out infinite",
+        "slide-up-reveal": "slide-up-reveal 0.5s ease-out",
+        shimmer: "shimmer 2s linear infinite",
+        float: "float 3s ease-in-out infinite",
+        "bounce-in": "bounce-in 0.6s ease-out",
+      },
+      /* Background image for shimmer effect */
+      backgroundImage: {
+        shimmer: "linear-gradient(90deg, transparent, hsl(var(--muted) / 0.4), transparent)",
       },
     },
   },
