@@ -11,8 +11,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ServiceProvider } from "@/contexts/ServiceContext";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { Today, Discover, Profile, Settings, NotFound } from "./pages";
 
 /** Query client for data fetching */
 const queryClient = new QueryClient();
@@ -30,10 +29,15 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/discover" element={<Index />} />
-            <Route path="/profile" element={<Index />} />
-            <Route path="/settings" element={<Index />} />
+            {/* Today - Home page with daily event */}
+            <Route path="/" element={<Today />} />
+            {/* Discover - Browse and explore events */}
+            <Route path="/discover" element={<Discover />} />
+            {/* Profile - User profile and stats */}
+            <Route path="/profile" element={<Profile />} />
+            {/* Settings - App preferences */}
+            <Route path="/settings" element={<Settings />} />
+            {/* 404 - Not found */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

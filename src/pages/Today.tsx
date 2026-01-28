@@ -1,8 +1,9 @@
 /**
- * Index Page (Home / Today's Event)
+ * Today Page (Home / Daily Event)
  * 
  * The main screen of HereNow showing today's daily event.
  * Users watch ads to unlock, then see the event details.
+ * This is the primary experience users see when opening the app.
  */
 
 import React from 'react';
@@ -14,30 +15,38 @@ import { useEventViewModel } from '@/viewmodels';
 import { Loader2 } from 'lucide-react';
 
 /**
- * Index Page Component
+ * Today Page Component
  * 
  * Displays the daily event experience with ad-unlock flow.
+ * Users must watch 3 ads to reveal today's unique event.
  */
-const Index = () => {
-  /** Get event state and actions from ViewModel */
+const Today = () => {
+  /**
+   * Get event state and actions from ViewModel.
+   * This separates UI from business logic following MVVM pattern.
+   */
   const {
-    event,
-    isLoading,
-    isUnlocked,
-    adsWatched,
-    isAttending,
-    watchAd,
-    toggleAttendance,
+    event,        // Today's event data (null if not unlocked)
+    isLoading,    // Whether event data is being fetched
+    isUnlocked,   // Whether user has watched 3 ads
+    adsWatched,   // Number of ads watched (0-3)
+    isAttending,  // Whether user is attending this event
+    watchAd,      // Function to record ad watch
+    toggleAttendance, // Function to toggle attendance
   } = useEventViewModel();
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Fixed header */}
+      {/* ============================================ */}
+      {/* Fixed header with app branding and actions */}
+      {/* ============================================ */}
       <Header hasNotifications={true} />
 
-      {/* Main content with padding for fixed nav */}
+      {/* ============================================ */}
+      {/* Main content area with padding for fixed nav */}
+      {/* ============================================ */}
       <main className="pt-16 pb-20 px-4 max-w-lg mx-auto">
-        {/* Page title */}
+        {/* Page title and current date */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -45,6 +54,7 @@ const Index = () => {
         >
           <h2 className="text-2xl font-bold text-foreground">Today's Adventure</h2>
           <p className="text-muted-foreground mt-1">
+            {/* Display current date in readable format */}
             {new Date().toLocaleDateString('en-US', { 
               weekday: 'long', 
               month: 'long', 
@@ -53,7 +63,10 @@ const Index = () => {
           </p>
         </motion.div>
 
-        {/* Ad unlock progress */}
+        {/* ============================================ */}
+        {/* Ad unlock progress tracker */}
+        {/* Shows 3 circles for ads, fills as user watches */}
+        {/* ============================================ */}
         <AdWatchProgress
           adsWatched={adsWatched}
           isUnlocked={isUnlocked}
@@ -61,14 +74,19 @@ const Index = () => {
           className="mb-6"
         />
 
-        {/* Loading state */}
+        {/* ============================================ */}
+        {/* Loading state while fetching event data */}
+        {/* ============================================ */}
         {isLoading && (
           <div className="flex items-center justify-center py-12">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
           </div>
         )}
 
-        {/* Event card when unlocked */}
+        {/* ============================================ */}
+        {/* Event card when unlocked (3 ads watched) */}
+        {/* Shows attendees and full event details */}
+        {/* ============================================ */}
         {isUnlocked && event && !isLoading && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -76,13 +94,13 @@ const Index = () => {
             transition={{ delay: 0.2 }}
             className="space-y-4"
           >
-            {/* Attendee preview */}
+            {/* Preview of who's attending */}
             <AttendeePreview
               attendees={MOCK_ATTENDEES}
               totalCount={event.currentAttendees}
             />
 
-            {/* Main event card */}
+            {/* Main event card with all details */}
             <EventCard
               event={event}
               isAttending={isAttending}
@@ -91,7 +109,10 @@ const Index = () => {
           </motion.div>
         )}
 
-        {/* Teaser when locked */}
+        {/* ============================================ */}
+        {/* Teaser message when event is still locked */}
+        {/* Encourages user to watch more ads */}
+        {/* ============================================ */}
         {!isUnlocked && !isLoading && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -108,10 +129,12 @@ const Index = () => {
         )}
       </main>
 
-      {/* Fixed bottom navigation */}
+      {/* ============================================ */}
+      {/* Fixed bottom navigation bar */}
+      {/* ============================================ */}
       <BottomNav />
     </div>
   );
 };
 
-export default Index;
+export default Today;
