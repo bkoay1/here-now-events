@@ -1,73 +1,36 @@
-# Welcome to your Lovable project
+BeReal meets Partiful meets theNudge.
 
-## Project info
+Overall Premise:
+      All users sign up to participate in randomly generated events organized by area, price, and activity type. These events can be generated on a daily, weekly, or monthly cadence. Events are niche, quirky, and customizable to user preference.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+User Experience:
+      A. Users are able to sign up for 2 group types:
+            1. As an individual to meet other individuals
+            2. As a group meeting other groups.
+      B. Users are able to set preferences for:
+            1. Price Point
+            2. Activity Type (Physical vs. Mental)
+            3. Duration
+            4. Distance from user, capped at 100 miles
+      C. Events are suggested the morning of the event. A timer countdown is present to the reveal of the event.
+            1. Location
+            2. Activity
+            3. Photo dump area
+            4. Event rating + feedback area
+      D. Users are able to see who is going to attend, like a Partiful list.
+      E. User profiles are enabled. Able to see:
+            1. Friends
+            2. Previous events attended
+            3. Preferences
+            4. Rating System (friendliness, safety, etc)
+            5. Badges
+            6. Report Button - Users are able to give feedback on each attendee anonymously. 
+                  a. Users unaware of reports given on them, only fed directly to app for matchmaking and potential ban purposes
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Business:
+      A. Get the application off the ground and obtain as large a user base as possible in the targeted launch area.
+      B. Reach a certain threshold (3 concurrent events) and begin fielding local businesses to sponsor or host events for free.
+            1. Simultaneously introduce an Ad-based unlock for the daily event for ad-revenue
+      C. Host a HereNow convention with organizations or businesses that have hosted, low entry cost.
+      D. Reach another threshold to start having businesses bid for events.
+      
