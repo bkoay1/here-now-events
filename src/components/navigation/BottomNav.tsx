@@ -9,7 +9,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Compass, User, Settings } from 'lucide-react';
+import { Home, User, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
@@ -33,11 +33,6 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Today',
     path: '/',
     icon: Home,
-  },
-  {
-    label: 'Discover',
-    path: '/discover',
-    icon: Compass,
   },
   {
     label: 'Profile',

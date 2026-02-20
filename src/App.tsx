@@ -11,7 +11,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ServiceProvider } from "@/contexts/ServiceContext";
-import { Today, Discover, Profile, Settings, NotFound } from "./pages";
+import { Today, Profile, Settings, NotFound } from "./pages";
 
 /** Query client for data fetching */
 const queryClient = new QueryClient();
@@ -31,8 +31,6 @@ const App = () => (
           <Routes>
             {/* Today - Home page with daily event */}
             <Route path="/" element={<Today />} />
-            {/* Discover - Browse and explore events */}
-            <Route path="/discover" element={<Discover />} />
             {/* Profile - User profile and stats */}
             <Route path="/profile" element={<Profile />} />
             {/* Settings - App preferences */}
