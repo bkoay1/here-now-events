@@ -11,7 +11,7 @@
    - Activity Type (Physical vs. Mental)
    - Duration
    - Distance from user, capped at 100 miles
-3. Events are suggested the morning of the event. A timer countdown is present to the reveal of the event.
+3. Events are suggested the morning of the event. A timer countdown is present to the reveal of the event at 12:00 PM local time.
    - Location
    - Activity
    - Photo dump area
@@ -27,13 +27,6 @@
    - Users are able to give feedback on each attendee anonymously.
    - Users unaware of reports given on them, only fed directly to app for matchmaking and potential ban purposes
 
-**Business:**
-1. Get the application off the ground and obtain as large a user base as possible in the targeted launch area.
-2. Reach a certain threshold (3 concurrent events) and begin fielding local businesses to sponsor or host events for free.
-3. Introduce an Ad-based unlock for the daily event for ad-revenue
-4. Host a HereNow convention with organizations or businesses that have hosted, low entry cost.
-5. Reach another threshold to start having businesses bid for events.
-      
 **Credit:**
 1. Brandon Koay as the author and owner.
 2. Loveable.ai as the development agent.

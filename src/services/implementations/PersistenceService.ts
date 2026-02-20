@@ -14,11 +14,6 @@ import {
 } from '../interfaces/IPersistenceService';
 
 /**
- * Number of ads required to unlock daily event.
- */
-const ADS_REQUIRED = 3;
-
-/**
  * Gets today's date as a string in YYYY-MM-DD format.
  * Used for daily resets and event date matching.
  */
@@ -194,53 +189,11 @@ export class PersistenceService implements IPersistenceService {
   }
 
   /**
-   * Records that an ad was watched.
-   * Resets count daily to ensure fair monetization.
+   * Checks if the daily event is revealed (past 12pm local time).
    */
-  async recordAdWatch(): Promise<number> {
-    const today = getTodayDateString();
-    
-    // Get current ad data
-    const adData = await this.get<{ date: string; count: number }>(StorageKey.AD_WATCH_COUNT);
-    
-    // Check if this is a new day
-    if (!adData || adData.date !== today) {
-      // Reset count for new day
-      const newData = { date: today, count: 1 };
-      await this.set(StorageKey.AD_WATCH_COUNT, newData);
-      return 1;
-    }
-
-    // Increment the count
-    const newCount = adData.count + 1;
-    await this.set(StorageKey.AD_WATCH_COUNT, { date: today, count: newCount });
-    
-    return newCount;
-  }
-
-  /**
-   * Gets the number of ads watched today.
-   * Returns 0 if no ads watched or data is from a different day.
-   */
-  async getAdWatchCount(): Promise<number> {
-    const today = getTodayDateString();
-    const adData = await this.get<{ date: string; count: number }>(StorageKey.AD_WATCH_COUNT);
-    
-    // Return 0 if no data or from different day
-    if (!adData || adData.date !== today) {
-      return 0;
-    }
-
-    return adData.count;
-  }
-
-  /**
-   * Checks if the daily event is unlocked.
-   * Event unlocks after watching 3 ads.
-   */
-  async isEventUnlocked(): Promise<boolean> {
-    const adCount = await this.getAdWatchCount();
-    return adCount >= ADS_REQUIRED;
+  async isEventRevealed(): Promise<boolean> {
+    const now = new Date();
+    return now.getHours() >= 12;
   }
 
   /**
