@@ -164,7 +164,6 @@ export enum StorageKey {
   ATTENDED_EVENTS = 'herenow_attended_events',
   NOTIFICATION_PREFS = 'herenow_notification_prefs',
   ONBOARDING_STATE = 'herenow_onboarding',
-  AD_WATCH_COUNT = 'herenow_ad_count',
   LAST_EVENT_DATE = 'herenow_last_event_date',
 }
 
@@ -234,22 +233,8 @@ export interface IPersistenceService {
   cacheDailyEvent(event: DailyEvent): Promise<void>;
 
   /**
-   * Records that an ad was watched.
-   * Tracks progress toward unlocking daily event.
-   * @returns The new total ad watch count for today
+   * Checks if the daily event is revealed (past 12pm local time).
+   * @returns True if event is revealed
    */
-  recordAdWatch(): Promise<number>;
-
-  /**
-   * Gets the number of ads watched today.
-   * @returns Count of ads watched today
-   */
-  getAdWatchCount(): Promise<number>;
-
-  /**
-   * Checks if the daily event is unlocked.
-   * Requires watching 3 ads to unlock.
-   * @returns True if event is unlocked
-   */
-  isEventUnlocked(): Promise<boolean>;
+  isEventRevealed(): Promise<boolean>;
 }

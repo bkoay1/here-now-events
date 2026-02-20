@@ -5,5 +5,5 @@
  */
 
 export { EventCard } from './EventCard';
-export { AdWatchProgress } from './AdWatchProgress';
+export { EventCountdown } from './EventCountdown';
 export { AttendeePreview, MOCK_ATTENDEES } from './AttendeePreview';
