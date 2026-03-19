@@ -52,7 +52,7 @@ export class NotificationService implements INotificationService {
   private preferences: NotificationPreferences;
   
   /** Map of scheduled notification timeouts */
-  private scheduledTimeouts: Map<string, NodeJS.Timeout> = new Map();
+  private scheduledTimeouts: Map<string, ReturnType<typeof setTimeout>> = new Map();
   
   /** Map of location-triggered notifications */
   private locationNotifications: Map<string, LocationNotification> = new Map();
